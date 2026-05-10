@@ -1,43 +1,50 @@
+import Link from "next/link";
+
 export default function HomePage() {
   return (
     <main
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(135deg, #f8fbff 0%, #eef5ff 50%, #ffffff 100%)",
-        padding: "60px 20px",
+          "linear-gradient(to bottom right, #f8fbff, #eef4ff)",
         fontFamily: "Arial, sans-serif",
+        color: "#0f172a",
       }}
     >
-      <div
+      {/* HERO */}
+      <section
         style={{
-          maxWidth: "1000px",
+          maxWidth: "1200px",
           margin: "0 auto",
+          padding: "100px 20px 80px",
           textAlign: "center",
         }}
       >
+        {/* Badge */}
         <div
           style={{
             display: "inline-block",
             background: "#dbeafe",
             color: "#2563eb",
-            padding: "8px 18px",
+            padding: "12px 24px",
             borderRadius: "999px",
             fontWeight: 700,
-            fontSize: "14px",
-            marginBottom: "24px",
+            marginBottom: "40px",
+            fontSize: "15px",
           }}
         >
           EduPrompt Lesson Generator
         </div>
 
+        {/* Heading */}
         <h1
           style={{
-            fontSize: "64px",
+            fontSize: "72px",
             lineHeight: 1.05,
-            marginBottom: "24px",
-            color: "#0f172a",
             fontWeight: 800,
+            maxWidth: "900px",
+            margin: "0 auto 30px",
+            letterSpacing: "-2px",
           }}
         >
           Build AI-Powered
@@ -45,104 +52,126 @@ export default function HomePage() {
           Lesson Plans Faster
         </h1>
 
+        {/* Subheading */}
         <p
           style={{
-            fontSize: "20px",
-            lineHeight: 1.7,
+            fontSize: "28px",
             color: "#475569",
-            maxWidth: "720px",
-            margin: "0 auto 40px",
+            maxWidth: "850px",
+            margin: "0 auto 50px",
+            lineHeight: 1.6,
           }}
         >
-          Create standards-aligned lesson plans for any grade level,
-          subject, and learning style in minutes.
+          Create standards-aligned lesson plans for any grade
+          level, subject, and learning style in minutes.
         </p>
 
+        {/* Buttons */}
         <div
           style={{
             display: "flex",
-            gap: "16px",
+            gap: "20px",
             justifyContent: "center",
             flexWrap: "wrap",
-            marginBottom: "60px",
+            marginBottom: "80px",
           }}
         >
-          <button
-            style={{
-              background: "#2563eb",
-              color: "white",
-              border: "none",
-              padding: "16px 28px",
-              borderRadius: "12px",
-              fontSize: "16px",
-              fontWeight: 700,
-              cursor: "pointer",
-            }}
-          >
-            Start Generating
-          </button>
+          <Link href="/generator">
+            <button
+              style={{
+                background: "#2563eb",
+                color: "white",
+                border: "none",
+                padding: "20px 38px",
+                borderRadius: "16px",
+                fontSize: "20px",
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              Start Generating
+            </button>
+          </Link>
 
-          <button
-            style={{
-              background: "white",
-              color: "#0f172a",
-              border: "1px solid #cbd5e1",
-              padding: "16px 28px",
-              borderRadius: "12px",
-              fontSize: "16px",
-              fontWeight: 700,
-              cursor: "pointer",
-            }}
-          >
-            View Demo
-          </button>
+          <Link href="/about">
+            <button
+              style={{
+                background: "white",
+                color: "#0f172a",
+                border: "1px solid #cbd5e1",
+                padding: "20px 38px",
+                borderRadius: "16px",
+                fontSize: "20px",
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              About This Tool
+            </button>
+          </Link>
         </div>
 
+        {/* Feature Cards */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
-            gap: "20px",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "24px",
           }}
         >
           {[
-            "Standards-Aligned Plans",
-            "Differentiated Instruction",
-            "Printable Activities",
-            "Exit Tickets & Assessments",
-          ].map((item) => (
+            {
+              title: "Standards-Aligned Plans",
+              text: "Professional classroom-ready instructional support powered by AI.",
+            },
+            {
+              title: "Differentiated Instruction",
+              text: "Create accommodations and supports for diverse learners.",
+            },
+            {
+              title: "Printable Activities",
+              text: "Generate worksheets, bell ringers, and practice activities.",
+            },
+            {
+              title: "Exit Tickets & Assessments",
+              text: "Quick formative assessment tools in seconds.",
+            },
+          ].map((card) => (
             <div
-              key={item}
+              key={card.title}
               style={{
                 background: "white",
-                padding: "28px",
-                borderRadius: "18px",
+                borderRadius: "24px",
+                padding: "40px 30px",
                 border: "1px solid #e2e8f0",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.04)",
+                boxShadow:
+                  "0 10px 30px rgba(0,0,0,0.04)",
               }}
             >
               <h3
                 style={{
-                  fontSize: "20px",
-                  marginBottom: "12px",
-                  color: "#0f172a",
+                  fontSize: "32px",
+                  marginBottom: "18px",
+                  fontWeight: 800,
                 }}
               >
-                {item}
+                {card.title}
               </h3>
 
               <p
                 style={{
                   color: "#64748b",
-                  lineHeight: 1.6,
+                  lineHeight: 1.7,
+                  fontSize: "20px",
                 }}
               >
-                Professional classroom-ready instructional support powered by AI.
+                {card.text}
               </p>
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </main>
   );
 }
